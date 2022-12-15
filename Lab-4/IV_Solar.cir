@@ -1,0 +1,42 @@
+Solar Cell I-V Characteristics
+
+* Including Solar cell subcircuit
+.include Solar_Cell.txt
+
+* Circuit connections
+Vs 1 0 dc 20
+X1 1 2 solar_cell
+R1 2 dummy 100
+Vdummy dummy 0 dc 0
+
+* Performing DC analysis
+.dc Vs -2 2 0.01
+.control
+run
+
+* Plot settings
+set color0 = white
+set color1 = black
+set color2 = red
+
+* I-V Plot
+plot i(Vdummy), (i(Vdummy)*v(1,2)) vs v(1,2)
+
+* Measuring cutin voltage (1mA)
+meas dc cutin find v(1,2) when i(Vdummy) = 1m
+
+* Measuring Isc and Vsc
+meas dc Isc find i(Vdummy) when v(1,2) = 0
+meas dc Voc find v(1,2) when i(Vdummy) = 0
+
+* Measuring Im and Vm
+let derivout = deriv(v(1,2)*i(Vdummy))
+meas dc Im find i(Vdummy) when derivout = 0
+meas dc Vm find v(1,2) when derivout = 0
+
+* Measuring FF
+let FF = (Im*Vm)/(Isc*Voc)
+print FF
+
+.endc
+.end

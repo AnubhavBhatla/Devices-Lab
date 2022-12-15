@@ -1,0 +1,98 @@
+PhotoDiode
+
+*Model files
+.include photo_diode.txt
+.include ua741.txt
+
+*Power supplies
+vdc 1 0 dc 0v
+vdcp 3 0 dc 12v
+vdcn 4 0 dc -12v
+
+*Circuit connections (set IL_val here)
+Xop 1 2 3 4 2 UA741
+Xs 5 0 photo_diode IL_val=1e-3
+vdc_Xs 2 5 dc 0v
+
+.control
+
+* Plot settings
+set color0 = white
+set color1 = black
+set color2 = red
+
+************ T = 25 *************
+
+* Setting the temperature
+set temp=25
+dc vdc -2 2 0.01
+
+* I-V Plot
+print i(vdc_Xs) v(5) > IV_light_25.txt
+
+meas dc Ir find i(vdc_Xs) when v(5) = -1.5
+meas dc Vf find v(5) when i(vdc_Xs) = 1m
+
+************ T = 35 *************
+
+* Setting the temperature
+set temp=35
+dc vdc -2 2 0.01
+
+* I-V Plot
+print i(vdc_Xs) v(5) > IV_light_35.txt
+
+meas dc Ir find i(vdc_Xs) when v(5) = -1.5
+meas dc Vf find v(5) when i(vdc_Xs) = 1m
+
+************ T = 45 *************
+
+* Setting the temperature
+set temp=45
+dc vdc -2 2 0.01
+
+* I-V Plot
+print i(vdc_Xs) v(5) > IV_light_45.txt
+
+meas dc Ir find i(vdc_Xs) when v(5) = -1.5
+meas dc Vf find v(5) when i(vdc_Xs) = 1m
+
+************ T = 55 *************
+
+* Setting the temperature
+set temp=55
+dc vdc -2 2 0.01
+
+* I-V Plot
+print i(vdc_Xs) v(5) > IV_light_55.txt
+
+meas dc Ir find i(vdc_Xs) when v(5) = -1.5
+meas dc Vf find v(5) when i(vdc_Xs) = 1m
+
+************ T = 65 *************
+
+* Setting the temperature
+set temp=65
+dc vdc -2 2 0.01
+
+* I-V Plot
+print i(vdc_Xs) v(5) > IV_light_65.txt
+
+meas dc Ir find i(vdc_Xs) when v(5) = -1.5
+meas dc Vf find v(5) when i(vdc_Xs) = 1m
+
+************ T = 75 *************
+
+* Setting the temperature
+set temp=75
+dc vdc -2 2 0.01
+
+* I-V Plot
+print i(vdc_Xs) v(5) > IV_light_75.txt
+
+meas dc Ir find i(vdc_Xs) when v(5) = -1.5
+meas dc Vf find v(5) when i(vdc_Xs) = 1m
+
+
+.endc
+.end

@@ -1,0 +1,32 @@
+PhotoDiode
+
+*Model files
+.include photo_diode.txt
+.include ua741.txt
+
+*Power supplies
+vdc 1 0 dc 0v
+vdcp 3 0 dc 12v
+vdcn 4 0 dc -12v
+
+*Circuit connections (set IL_val here)
+Xop 1 2 3 4 2 UA741
+Xs 2 5 photo_diode IL_val=0e-3
+vdc_Xs 5 0 dc 0v
+
+*DC analysis, temperature set, plot and measure
+.option set temp = 25
+.dc vdc -2 2 0.01
+
+.control
+run
+
+* Plot settings
+set color0 = white
+set color1 = black
+set color2 = red
+
+plot i(vdc_Xs) vs v(2,5)
+
+.endc
+.end

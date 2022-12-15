@@ -1,0 +1,22 @@
+Dynamic Resistance
+
+.include rn142.txt
+
+Vrf 1 0 sin(0 125m 1Meg 0 0)
+Vdc 2 1 dc 1
+r 2 dummy 1k
+vdummy dummy 3 dc 0 ac 0
+d 3 0 DRN142S
+
+.tran 0.1n 50u 5u
+.control
+run
+
+plot v(3)
+plot i(vdummy)
+
+meas tran vpp PP v(3)
+meas tran ipp PP i(vdummy)
+
+.endc
+.end

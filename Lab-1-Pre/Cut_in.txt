@@ -1,0 +1,7 @@
+Cut-in Voltages:
+
+1N914 Diode: 0.6V
+Red LED: 1.8V
+Green LED: 1.9V
+Blue LED: 2.7V
+White LED: 2.9V

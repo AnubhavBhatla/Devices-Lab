@@ -1,0 +1,29 @@
+Reverse Breakdown
+
+.include Diode_1N914.txt
+
+*Zener Subcircuit
+.SUBCKT ZENER 1 2
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 10.8
+.MODEL DF D ( IS=27.5p RS=0.620 N=1.10 CJO=78.3p VJ=1.00 M=0.330 TT=50.1n)
+.MODEL DR D ( IS=5.49f RS=50 N=1.77 )
+.ENDS
+
+Vs 1 0 dc 20
+R1 1 2 100
+R2 2 0 1k
+$ D1 2 3 1N914
+X1 2 3 ZENER
+Vdummy 3 4 dc 0
+R3 4 0 100
+
+.dc Vs -200 5 0.01
+.control
+run
+
+plot i(Vdummy) vs v(2,3)
+
+.endc
+.end

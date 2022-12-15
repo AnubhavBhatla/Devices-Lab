@@ -1,0 +1,26 @@
+Reverse Recovery Time
+
+                 PN                  Schottky
+Freq     Irr     If     RRT     Irr     If     RRT
+10kHz    1.08mA  0.2mA  1.8us   0.48mA  0.46mA 150ns
+100kHz   1.02mA  0.24mA 0.8us   0.44mA  0.52mA 125ns
+1MHz     0.86mA  0.24mA 180ns   0.44mA  0.52mA 110ns
+10MHz    0.28mA  0.22mA   -     0.4mA   0.52mA   -
+
+
+C-V Characteristics
+
+Vdc  Vout  Vdut  Cdut
+0V   40mV  32mV  
+0.5V 48mV  60mV
+1V   32mV  40mV
+1.5V 32mV  24mV
+2V   32mV  24mV
+3V   32mV  24mV
+4V   40mV  24mV
+5V   32mV  24mV
+6V   32mV  24mV
+7V   32mV  24mV
+8V   32mV  24mV
+9V   32mV  24mV
+10V  32mV  24mV

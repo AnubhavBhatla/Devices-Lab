@@ -1,0 +1,44 @@
+Diode I-V Characteristics and Band-Gap
+
+.include red_5mm.txt
+.include green_5mm.txt
+.include blue_5mm.txt
+.include white_5mm.txt
+.include Diode_1N914.txt
+
+
+Vs 1 0 dc 20
+D1 1 2 1N914
+D2 1 3 RED
+D3 1 4 GREEN
+D4 1 5 BLUE
+D5 1 6 WHITE 
+
+R1 2 12 100
+R2 3 13 100
+R3 4 14 100
+R4 5 15 100
+R5 6 16 100
+
+V1 12 0 dc 0
+V2 13 0 dc 0
+V3 14 0 dc 0
+V4 15 0 dc 0
+V5 16 0 dc 0
+
+.dc Vs 0.01 5 0.01
+.control
+run
+
+plot i(V1) vs v(1,2), i(V2) vs v(1,3), i(V3) vs v(1,4), i(V4) vs v(1,5), i(V5) vs v(1,6)
+set color0 = black
+set color1 = white
+set color2 = yellow
+set color3 = red
+set color4 = green
+set color5 = blue
+set color6 = white
+plot ln(i(V1)) vs v(1,2), ln(i(V2)) vs v(1,3), ln(i(V3)) vs v(1,4), ln(i(V4)) vs v(1,5), ln(i(V5)) vs v(1,6)
+
+.endc
+.end

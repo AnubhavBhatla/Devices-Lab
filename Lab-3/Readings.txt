@@ -1,0 +1,17 @@
+Reverse Recovery Time for PIN Diode
+
+Frequency    RRT
+  10kHz      190ns
+  100kHz     160ns
+  1MHz       150ns
+  10MHz        -
+ 
+ 
+RF Switch
+
+ Vbias    Id      Vd
+  -5V   0.01uA  -5.09V
+  0V    74uA    5.7mV
+  1V    0.59mA  0.397V
+  3V    2.3mA   0.777V
+  5V    4.25mA  0.813V

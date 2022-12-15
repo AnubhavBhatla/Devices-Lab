@@ -1,0 +1,23 @@
+Reverse Recovery Time for 1N4007
+
+.include BAT85.txt
+
+Vp 1 0 pulse(-1 1 0ns 1ns 1ns 0.1ms 0.2ms)
+Vdummy 1 2 dc 0
+Rd 2 3 100
+X 3 0 BAT85
+
+.tran 1ns 300.01us 299.99us
+.control
+run
+
+plot i(Vdummy)
+plot v(3)
+
+meas tran tstart MIN_AT i(Vdummy)
+meas tran tstop MAX_AT i(Vdummy) from=tstart
+
+print tstop - tstart
+
+.endc
+.end

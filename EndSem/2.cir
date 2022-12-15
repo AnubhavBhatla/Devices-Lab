@@ -1,0 +1,41 @@
+*NMOS Subthreshold slope
+
+.include 2n7000.txt
+
+vgg 1 0 dc 0v
+vdd 2 0 dc 5v
+vbb 3 0 dc 0v
+m1 2 1 0 3 2N7000
+
+vgg 1 0 dc 0v
+vdd2 22 0 dc 5v
+vbb2 32 0 dc -0.5v
+m2 22 1 0 32 2N7000
+
+vgg 1 0 dc 0v
+vdd3 23 0 dc 5v
+vbb3 33 0 dc -1v
+m3 23 1 0 33 2N7000
+
+vgg 1 0 dc 0v
+vdd4 24 0 dc 5v
+vbb4 34 0 dc -1.5v
+m4 24 1 0 34 2N7000
+
+.dc vgg 0 10 0.01
+.control
+run
+
+meas dc oncurrent find i(vdd) when v(1)=2.5
+meas dc oncurrent2 find i(vdd2) when v(1)=2.5
+meas dc oncurrent3 find i(vdd3) when v(1)=2.5
+meas dc oncurrent4 find i(vdd4) when v(1)=2.5
+
+meas dc offcurrent find i(vdd) when v(1)=0.4
+meas dc offcurrent2 find i(vdd2) when v(1)=0.4
+meas dc offcurrent3 find i(vdd3) when v(1)=0.4
+meas dc offcurrent4 find i(vdd4) when v(1)=0.4
+
+.endc
+.end
+

@@ -1,0 +1,19 @@
+VBS = 0V
+Ion = 105.6 mA, Ioff = 159.9 pA, VT = 1.04319 V, SS = 40.904
+
+VBS = -0.5V 
+Ion = 99.17 mA, Ioff = 14.32 pA, VT = 1.12169 V, SS = 38.462
+
+VBS = -1V
+Ion = 94 mA, Ioff = 7.319 pA, VT = 1.17478 V, SS = 37.795
+
+VBS = -1.5V
+Ion = 89.85 mA, Ioff = 6.825 pA, VT = 1.21573 V, SS = 37.209
+
+As bias voltage becomes more negative, the threshold voltage increases and the sub-threshold slope decreases
+With VSB increasing, both on and off currents also decreases
+
+As an inverter is off, the static power consumption will be minimum if the off current is neglible, so VBS = -1.5V is most suited to reduce static power consumption.
+Switching speed is better for VBS = -1.5V as SS is lower i.e. lesser voltage applied is required to switch.
+
+Overall, VBS = -1.5V is more suited to act as an inverter.

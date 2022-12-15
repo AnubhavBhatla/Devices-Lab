@@ -1,0 +1,22 @@
+Bridge Rectifier
+
+.include BAT85.txt
+
+x1 dummy1 2 BAT85
+x2 0 1 BAT85
+x3 dummy3 2 BAT85
+x4 0 3 BAT85
+Rl 2 0 1k
+Vd1 1 dummy1 dc 0
+Vd2 3 dummy3 dc 0
+Vin 1 3 sin(0 5 50 0 0)
+
+.tran 0.1m 100m
+.control
+run
+
+plot v(2) v(1,3)
+plot v(2) vs v(1,3)
+
+.endc
+.endA

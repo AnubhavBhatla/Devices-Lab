@@ -1,0 +1,22 @@
+Bridge Rectifier
+
+.include 1N4007.txt
+
+d1 dummy1 2 1N4007
+d2 0 1 1N4007
+d3 dummy3 2 1N4007
+d4 0 3 1N4007
+Rl 2 0 1k
+Vd1 1 dummy1 dc 0
+Vd2 3 dummy3 dc 0
+Vin 1 3 sin(0 5 50 0 0)
+
+.tran 0.1m 100m
+.control
+run
+
+plot v(2) v(1,3)
+plot v(2) vs v(1,3)
+
+.endc
+.endA

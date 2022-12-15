@@ -1,0 +1,10 @@
+1N914 Diode
+
+Turn-on = 0.604V
+Reverse Breakdown Voltage = -99.83V
+
+
+1N34A Diode
+
+Turn-on = 0.253V
+Reverse Breakdown Voltage = -25V

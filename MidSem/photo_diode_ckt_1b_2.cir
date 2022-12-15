@@ -1,0 +1,66 @@
+PhotoDiode
+
+*Model files
+.include photo_diode.txt
+.include ua741.txt
+
+*Power supplies
+vdc 1 0 dc 0v
+vdcp 3 0 dc 12v
+vdcn 4 0 dc -12v
+
+*Circuit connections (set IL_val here)
+Xop1 1 21 3 4 21 UA741
+Xs11 21 51 photo_diode IL_val=0.5e-3
+vdc_Xs1 51 0 dc 0v
+
+Xop2 1 22 3 4 22 UA741
+Xs12 22 52 photo_diode IL_val=1e-3
+vdc_Xs2 52 0 dc 0v
+
+Xop3 1 23 3 4 23 UA741
+Xs13 23 53 photo_diode IL_val=1.5e-3
+vdc_Xs3 53 0 dc 0v
+
+Xop4 1 24 3 4 24 UA741
+Xs14 24 54 photo_diode IL_val=2e-3
+vdc_Xs4 54 0 dc 0v
+
+Xop5 1 25 3 4 25 UA741
+Xs15 25 55 photo_diode IL_val=2.5e-3
+vdc_Xs5 55 0 dc 0v
+
+Xop6 1 26 3 4 26 UA741
+Xs16 26 56 photo_diode IL_val=3e-3
+vdc_Xs6 56 0 dc 0v
+
+*DC analysis, temperature set, plot and measure
+.option set temp = 25
+.dc vdc -2 2 0.01
+
+.control
+run
+
+* Plot settings
+set color0 = white
+set color1 = black
+set color2 = red
+
+plot i(vdc_Xs1) vs v(21,51), i(vdc_Xs2) vs v(22,52), i(vdc_Xs3) vs v(23,53), i(vdc_Xs4) vs v(24,54), i(vdc_Xs5) vs v(25,55), i(vdc_Xs6) vs v(26,56)
+
+meas dc Ir1 find i(vdc_Xs1) when v(21,51) = -1.5
+meas dc Ir2 find i(vdc_Xs2) when v(22,52) = -1.5
+meas dc Ir3 find i(vdc_Xs3) when v(23,53) = -1.5
+meas dc Ir4 find i(vdc_Xs4) when v(24,54) = -1.5
+meas dc Ir5 find i(vdc_Xs5) when v(25,55) = -1.5
+meas dc Ir6 find i(vdc_Xs6) when v(26,56) = -1.5
+
+meas dc Vf1 find v(21,51) when i(vdc_Xs1) = 1m
+meas dc Vf2 find v(22,52) when i(vdc_Xs2) = 1m
+meas dc Vf3 find v(23,53) when i(vdc_Xs3) = 1m
+meas dc Vf4 find v(24,54) when i(vdc_Xs4) = 1m
+meas dc Vf5 find v(25,55) when i(vdc_Xs5) = 1m
+meas dc Vf6 find v(26,56) when i(vdc_Xs6) = 1m
+
+.endc
+.end
